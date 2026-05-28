@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+twilio
+langchain
+langchain-community
+langchain-mcp-adapters
+langchain-google-genai
+google-generativeai
+duckduckgo-search
+pymupdf
+opencv-python-headless
+pillow
+python-dotenv
+requests
+httpx
+fastmcp
