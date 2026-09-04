@@ -2,13 +2,36 @@
 
 ## Setup
 1. Clone repo, install deps: `pip install -r requirements.txt`
-2. Fill in `.env` with your Twilio + Google API keys
+2. Copy `.env.example` to `.env` and fill in your API keys (see Security section)
 3. Run: `uvicorn main:app --reload --port 8000`
 4. Expose: `ngrok http 8000`
 5. Set Twilio Sandbox webhook → `https://YOUR_NGROK/webhook` (POST)
 
+---
+
+## ⚠️ Security & Prerequisites
+
+**Important:** Never commit API credentials to this repository.
+Always use environment variables via `.env` files (which are ignored by git).
+
+### Get Your API Keys
+1. **Twilio**: Sign up at https://www.twilio.com/console
+2. **Google Gemini**: Get key at https://ai.google.dev/
+3. **ngrok**: Install from https://ngrok.com/ for local testing
+
+### Setup Instructions (Secure)
+1. Clone repo: `git clone https://github.com/Aaditya-jn/verto-ai.git`
+2. Create `.env` file from `.env.example`: `cp .env.example .env`
+3. Edit `.env` and add your actual API keys
+4. Install dependencies: `pip install -r requirements.txt`
+5. Run: `uvicorn main:app --reload --port 8000`
+6. Expose: `ngrok http 8000`
+7. Add webhook to Twilio: `https://YOUR_NGROK_URL/webhook` (POST)
+
+---
+
 ## Usage
-- Send "join <keyword>" or "hello" → activation message
+- Send "join \<keyword\>" or "hello" → activation message
 - Reply "1" → Hindi, "2" → Marathi, "3" → Gujarati
 - Send any news text, image, video, or PDF → fact-check reply
 
@@ -101,7 +124,8 @@ verto_ai/
 ├── user_languages.json        # Runtime language preferences (auto-created)
 ├── logs/
 │   └── activity.log           # Activity log
-├── .env                       # API keys (fill in before running)
+├── .env.example               # Template for environment variables (safe to commit)
+├── .env                       # API keys — DO NOT COMMIT (git-ignored)
 ├── requirements.txt           # Python dependencies
 └── README.md                  # This file
 ```
@@ -117,3 +141,29 @@ verto_ai/
 | `TWILIO_WHATSAPP_FROM` | Twilio sandbox number e.g. `whatsapp:+14155238886` |
 | `GOOGLE_API_KEY` | Google Gemini API key |
 | `USER_LANG_FILE` | Path to language store JSON (default: `user_languages.json`) |
+
+---
+
+## Contributing
+
+This is an open-source project! Feel free to:
+- Report bugs via GitHub Issues
+- Submit pull requests for improvements
+- Suggest features and enhancements
+
+### License
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+
+---
+
+## Disclaimer
+
+Verto AI is designed to assist in fact-checking but should not be
+considered a definitive source of truth. Always cross-reference findings
+with multiple reliable news sources. The developers are not responsible
+for any consequences arising from misinformation or misuse of this tool.
+
+## Support
+
+For issues, questions, or feature requests, please open a GitHub Issue
+or reach out via [GitHub Issues](https://github.com/Aaditya-jn/verto-ai/issues).
