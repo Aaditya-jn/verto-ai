@@ -22,6 +22,10 @@ if not root_logger.handlers:
     console_handler.setLevel(logging.INFO)
     root_logger.addHandler(console_handler)
 
+# Suppress noisy reloader logs from watchfiles
+logging.getLogger("watchfiles").setLevel(logging.WARNING)
+logging.getLogger("watchfiles.main").setLevel(logging.WARNING)
+
 # Export standard logger
 logger = logging.getLogger("__main__")
 
